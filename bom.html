@@ -16,7 +16,7 @@
   var bomCost = 0.0;
   for (var i = 0; i < bomCostEl.length; i++) {
     if (bomCostEl[i].innerText) {
-      bomCost += parseFloat(bomCostEl[i].innerText.substr(1))
+      bomCost += parseFloat(bomCostEl[i].innerText.substr(1) * bomTotalItemsEl[i].innerText)
     }
   }
   document.getElementById("bom-cost").innerHTML = "SGD $" + bomCost.toFixed(2)
