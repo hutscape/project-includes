@@ -1,0 +1,49 @@
+
+<section class="section is-small">
+  <div class="container">
+    <h2 class="title is-1">Features</h2>
+
+    <div class="content is-medium">
+      <ul>
+        {% for d in page.features %}
+          <li>{{ d.detail }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section is-small">
+  <div class="container">
+    <h2 class="title is-1">Firmware</h2>
+
+    <p class="subtitle is-4"><a href="{{site.github.repository_url}}/tree/master/{{page.path | replace:'.md',''}}">Upload the code</a> with <code>make flash</code> command.</p>
+
+    {% if page.firmware_instructions %}
+    <p>{{ page.firmware_instructions }}</p>
+    {% endif %}
+
+    {% highlight c %}{%- include_relative firmware/firmware.ino -%}{% endhighlight %}
+
+    <p class="subtitle is-4">Makefile</p>
+    {% highlight make %}{%- include_relative firmware/Makefile -%}{% endhighlight %}
+
+    <p class="subtitle is-4">Serial console</p>
+    <img src="{{site.url}}/images/software/console.png" alt="Firmware serial console">
+  </div>
+</section>
+
+<section class="section is-small">
+  <div class="container">
+    <h2 class="title is-1">Test</h2>
+
+    <p class="subtitle is-4"><a href="{{site.github.repository_url}}/tree/master/test">Upload the code</a> with <code>make flash</code> command.</p>
+    {% highlight c %}{%- include_relative test/test.ino -%}{% endhighlight %}
+
+    <p class="subtitle is-4">Makefile</p>
+    {% highlight make %}{%- include_relative test/Makefile -%}{% endhighlight %}
+
+    <p class="subtitle is-4">Serial console</p>
+    <img src="{{site.url}}/images/software/test-console.png" alt="Firmware serial console">
+  </div>
+</section>
