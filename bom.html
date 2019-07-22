@@ -1,3 +1,10 @@
+<script src="//cdnjs.cloudflare.com/ajax/libs/money.js/0.2.0/money.min.js" integrity="sha256-kCmDaPrZX+ae0D0EJQylHG7OAtg5kb1KMrYMmLLtHWQ=" crossorigin="anonymous"></script>
+<script>
+  fx.base = "USD"
+  fx.rates = { "SGD" : 1.36, "USD" : 1 }
+  fx.settings = { from: "SGD", to: "USD" }
+</script>
+
 <script>
   // Get the total number of unique BOM items
   var bomUniqueItems = document.getElementsByClassName("bom-item").length
@@ -19,7 +26,7 @@
       bomCost += parseFloat(bomCostEl[i].innerText.substr(1) * bomTotalItemsEl[i].innerText)
     }
   }
-  document.getElementById("bom-cost").innerHTML = "SGD $" + bomCost.toFixed(2)
+  document.getElementById("bom-cost").innerHTML = "SGD $" + bomCost.toFixed(2) + " / " + "USD $" + fx.convert(bomCost).toFixed(2)
 
   // Get total unique number of vendors
   var bomVendorEl = document.getElementsByClassName("bom-vendor")
