@@ -92,7 +92,11 @@
         <div class="control">
           <div class="tags has-addons">
             <span class="tag is-medium is-white">status</span>
+            {% if site.data.project.status == "completed" %}
             <span class="tag is-medium">{{ site.data.project.status }} in {{ site.data.project.completion }}</span>
+            {% else %}
+            <span class="tag is-medium">{{ site.data.project.status }}</span>
+            {% endif %}
           </div>
         </div>
         {% endif %}
