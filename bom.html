@@ -12,6 +12,7 @@
     </div>
   </div>
 </section>
+
 <section class="section is-small">
   <div class="container">
     <h2 class="title is-1">Bill of Materials</h2>
@@ -71,3 +72,14 @@
     </table>
   </div>
 </section>
+
+{% if page.ibom == true %}
+<section class="section is-small">
+  <div class="container">
+    <h2 class="title is-1">Interactive BOM</h2>
+    <p class="subtitle">This can be used while soldering, testing or inspecting the manufactured and assembled PCB.</p>
+  </div>
+</section>
+
+{% include_relative bom/ibom.html %}
+{% endif %}
