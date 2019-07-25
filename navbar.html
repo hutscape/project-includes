@@ -1,7 +1,3 @@
-{%- assign default_paths = site.pages | map: "path" -%}
-{%- assign page_paths = site.header_pages | default: default_paths -%}
-{%- assign titles_size = site.pages | map: 'title' | join: '' | size -%}
-
 <nav class="navbar is-spaced has-shadow" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="https://hutscape.com">Hutscape</a>
@@ -18,14 +14,15 @@
       <a class="navbar-item" href="https://hutscape.com/checklists">Checklists</a>
       <a class="navbar-item" href="https://hutscape.com/components">Components</a>
       <a class="navbar-item" href="https://hutscape.com/references">References</a>
+      <a class="navbar-item" href="https://hutscape.com/credits">Credits</a>
     </div>
 
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <p class="handwriting has-text-grey-light">Spotted <br>a mistake?</p>
+          <p class="handwriting has-text-grey-light">Spotted<br>a mistake?</p>
           <a class="button is-primary" href="{{site.github.repository_url}}/blob/master/{{page.path}}"><strong>Edit this page</strong></a>
-          <a class="button is-light" href="{{site.github.repository_url}}"> GitHub </a>
+          <a class="button is-light" href="{{site.github.repository_url}}">GitHub</a>
         </div>
       </div>
     </div>
