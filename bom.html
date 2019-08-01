@@ -85,7 +85,8 @@
   </div>
 </section>
 
-<div class="is-hidden-touch">
+<!-- FIXME: If div is used instead of span on the desktop view, the right side view of the PCB in canvas is not displayed. -->
+<span class="is-hidden-touch">
   {% include_relative bom/ibom.html %}
-</div>
+</span>
 {% endif %}
