@@ -1,3 +1,32 @@
+{% if page.user_stories %}
+<section class="section is-small">
+  <div class="container">
+    <h2 class="title is-1">User Stories</h2>
+
+    {% for story in page.user_stories %}
+      <p class="subtitle is-3">{{ story.user | capitalize }}</p>
+      <hr>
+
+      <div class="columns is-multiline">
+      {% for action in story.actions %}
+        <div class="column is-4">
+          <div class="card">
+            <div class="card-content">
+              <p class="subtitle">
+                As a {{ story.user }}, I want to <strong>{{ action.goal }}</strong> so that <em>{{ action.reason }}</em>.
+              </p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+      </div>
+    {% endfor %}
+
+  </div>
+</section>
+{% endif %}
+
+{% if page.power_tree %}
 <section class="section is-small">
   <div class="container">
     <h2 class="title is-1">Power tree schematic</h2>
@@ -5,7 +34,9 @@
     <img src="{{site.url}}/images/design/power_tree.png" alt="Power Tree schematic">
   </div>
 </section>
+{% endif %}
 
+{% if page.state_machine %}
 <section class="section is-small">
   <div class="container">
     <h2 class="title is-1">State Machine</h2>
@@ -13,3 +44,4 @@
     <img src="{{site.url}}/images/design/state_machine.svg" alt="State Machine">
   </div>
 </section>
+{% endif %}
