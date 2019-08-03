@@ -1,8 +1,40 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/money.js/0.2.0/money.min.js" integrity="sha256-kCmDaPrZX+ae0D0EJQylHG7OAtg5kb1KMrYMmLLtHWQ=" crossorigin="anonymous"></script>
 <script>
   fx.base = "USD"
-  fx.rates = { "SGD" : 1.36, "USD" : 1 }
+  fx.rates = {
+    "SGD": 1.36,
+    "EUR": 0.90,
+    "GBP": 0.82,
+    "RMB": 6.94,
+    "INR": 69.67,
+    "USD": 1
+  }
   fx.settings = { from: "SGD", to: "USD" }
+
+  var currencySymbols = {
+    "SGD": "$",
+    "EUR": "€",
+    "GBP": "£",
+    "RMB": "¥",
+    "INR": "₹",
+    "USD": "$"
+  }
+
+  // TODO: Store initial BOM unit cost in SGD with liquid template and then manipulate the currency exchange
+  document.getElementById("currency").onchange = function() {
+    console.log(this.value)
+
+    var bomCostEls = document.getElementsByClassName("bom-cost")
+
+    for (var i = 0; i < bomCostEls.length; i++) {
+      if (bomCostEls[i].innerText) {
+
+        var unitCost = bomCostEls[i].innerText.substr(1)
+        bomCostEls[i].innerText = currencySymbols[this.value] + fx.convert(unitCost, {from: "SGD", to: this.value}).toFixed(2)
+      }
+    }
+  }
+
 </script>
 
 <script>
@@ -26,7 +58,7 @@
       bomCost += parseFloat(bomCostEl[i].innerText.substr(1) * bomTotalItemsEl[i].innerText)
     }
   }
-  document.getElementById("bom-cost").innerHTML = "SGD $" + bomCost.toFixed(2) + " / " + "USD $" + fx.convert(bomCost).toFixed(2)
+  document.getElementById("bom-cost").innerHTML = "SGD $" + bomCost.toFixed(2)
 
   // Get total unique number of vendors
   var bomVendorEl = document.getElementsByClassName("bom-vendor")

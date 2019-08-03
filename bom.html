@@ -17,6 +17,28 @@
   <div class="container">
     <h2 class="title is-1">Bill of Materials</h2>
     <a href="{{site.url}}/_data/bill_of_materials.csv" class="button is-large is-fullwidth is-info">Download BOM in CSV</a>
+    <br>
+
+    <div class="field is-horizontal">
+      <div class="field-label is-large">
+        <label class="label">Currency</label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <div class="control">
+            <div class="select is-large">
+              <select id="currency">
+                <option>USD</option>
+                <option>GBP</option>
+                <option>INR</option>
+                <option>RMB</option>
+                <option>EUR</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="table-container">
       <table class="table is-fullwidth is-hoverable">
