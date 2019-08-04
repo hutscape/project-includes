@@ -20,6 +20,9 @@
     "USD": "$"
   }
 
+  var bomCostList = [{% assign boms = site.data.bill_of_materials %} {% for bom in boms %} {{bom.Unit | round:2}}, {% endfor %}]
+  console.log(bomCostList)
+
   // TODO: Store initial BOM unit cost in SGD with liquid template and then manipulate the currency exchange
   document.getElementById("currency").onchange = function() {
     console.log(this.value)
