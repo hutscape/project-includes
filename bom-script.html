@@ -1,46 +1,27 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/money.js/0.2.0/money.min.js" integrity="sha256-kCmDaPrZX+ae0D0EJQylHG7OAtg5kb1KMrYMmLLtHWQ=" crossorigin="anonymous"></script>
 <script>
   fx.base = "USD"
-  fx.rates = {
-    "SGD": 1.36,
-    "EUR": 0.90,
-    "GBP": 0.82,
-    "RMB": 6.94,
-    "INR": 69.67,
-    "USD": 1
-  }
+  fx.rates = { "SGD": 1.36, "EUR": 0.90, "GBP": 0.82, "RMB": 6.94, "INR": 69.67, "USD": 1 }
   fx.settings = { from: "SGD", to: "USD" }
 
-  var currencySymbols = {
-    "SGD": "$",
-    "EUR": "€",
-    "GBP": "£",
-    "RMB": "¥",
-    "INR": "₹",
-    "USD": "$"
-  }
+  var currencySymbols = { "SGD": "$", "EUR": "€", "GBP": "£", "RMB": "¥", "INR": "₹", "USD": "$" }
+  var currencyEl = document.getElementById("currency")
 
-  var bomCostList = [{% assign boms = site.data.bill_of_materials %} {% for bom in boms %} {{bom.Unit | round:2}}, {% endfor %}]
-  console.log(bomCostList)
-
-  // TODO: Store initial BOM unit cost in SGD with liquid template and then manipulate the currency exchange
-  document.getElementById("currency").onchange = function() {
-    console.log(this.value)
-
+  function changeBomCost(currency) {
     var bomCostEls = document.getElementsByClassName("bom-cost")
+    var bomCostList = [{% assign boms = site.data.bill_of_materials %} {% for bom in boms %} {{bom.Unit | round:2}}, {% endfor %}]
 
     for (var i = 0; i < bomCostEls.length; i++) {
-      if (bomCostEls[i].innerText) {
-
-        var unitCost = bomCostEls[i].innerText.substr(1)
-        bomCostEls[i].innerText = currencySymbols[this.value] + fx.convert(unitCost, {from: "SGD", to: this.value}).toFixed(2)
-      }
+      bomCostEls[i].innerText = currencySymbols[currency] + fx.convert(bomCostList[i], {from: "SGD", to: currency}).toFixed(2)
     }
   }
 
-</script>
+  // On first page load, change all BOM cost to the default USD currency
+  changeBomCost("USD")
 
-<script>
+  // On change in dropdown, change all BOM cost to the chosen currency
+  currencyEl.onchange = function() { changeBomCost(this.value) }
+
   // Get the total number of unique BOM items
   var bomUniqueItems = document.getElementsByClassName("bom-item").length
   document.getElementById("bom-unique").innerHTML = bomUniqueItems

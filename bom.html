@@ -29,10 +29,11 @@
             <div class="select is-large">
               <select id="currency">
                 <option>USD</option>
+                <option>EUR</option>
                 <option>GBP</option>
                 <option>INR</option>
                 <option>RMB</option>
-                <option>EUR</option>
+                <option>SGD</option>
               </select>
             </div>
           </div>
@@ -51,7 +52,7 @@
             <th>Manufacturer Part No.</th>
             <th>Manufacturer</th>
             <th>Vendor</th>
-            <th>Unit Cost (SGD)</th>
+            <th>Unit Cost</th>
             <th>Description</th>
           </tr>
         </thead>
@@ -107,7 +108,9 @@
   </div>
 </section>
 
+{%- if jekyll.environment == 'development' and site.google_analytics -%}
 <!-- FIXME: If div is used instead of span on the desktop view, the right side view of the PCB in canvas is not displayed. -->
+{%- endif -%}
 <span class="is-hidden-touch">
   {% include_relative bom/ibom.html %}
 </span>
