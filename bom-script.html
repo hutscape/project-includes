@@ -16,11 +16,29 @@
     }
   }
 
+  function changeTotalBomCost(currency) {
+    var bomCostEls = document.getElementsByClassName("bom-cost")
+    var bomTotalItemsEl = document.getElementsByClassName("bom-quantity")
+
+    var bomCost = 0.0;
+    for (var i = 0; i < bomCostEls.length; i++) {
+      if (bomCostEls[i].innerText) {
+        bomCost += parseFloat(bomCostEls[i].innerText.substr(1) * bomTotalItemsEl[i].innerText)
+      }
+    }
+
+    document.getElementById("bom-cost").innerHTML = currencySymbols[currency] + bomCost.toFixed(2)
+  }
+
   // On first page load, change all BOM cost to the default USD currency
   changeBomCost("USD")
+  changeTotalBomCost("USD")
 
   // On change in dropdown, change all BOM cost to the chosen currency
-  currencyEl.onchange = function() { changeBomCost(this.value) }
+  currencyEl.onchange = function() {
+    changeBomCost(this.value)
+    changeTotalBomCost(this.value)
+  }
 
   // Get the total number of unique BOM items
   var bomUniqueItems = document.getElementsByClassName("bom-item").length
@@ -33,16 +51,6 @@
     bomTotalItems += parseInt(bomTotalItemsEl[i].innerText, 10)
   }
   document.getElementById("bom-total").innerHTML = bomTotalItems
-
-  // Get the total cost of BOM items
-  var bomCostEl = document.getElementsByClassName("bom-cost")
-  var bomCost = 0.0;
-  for (var i = 0; i < bomCostEl.length; i++) {
-    if (bomCostEl[i].innerText) {
-      bomCost += parseFloat(bomCostEl[i].innerText.substr(1) * bomTotalItemsEl[i].innerText)
-    }
-  }
-  document.getElementById("bom-cost").innerHTML = "SGD $" + bomCost.toFixed(2)
 
   // Get total unique number of vendors
   var bomVendorEl = document.getElementsByClassName("bom-vendor")
