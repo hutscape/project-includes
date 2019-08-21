@@ -48,6 +48,7 @@
       <table class="table is-fullwidth is-hoverable">
         <thead>
           <tr>
+            <th>#</th>
             <th>Designator</th>
             <th>Q</th>
             <th>Package</th>
@@ -64,6 +65,7 @@
           {% for bom in boms %}
             {% if bom.Designator %}
             <tr class="bom-item">
+              <td>{{ forloop.index }}</td>
               <td>{{bom.Designator}}</td>
               <td class="bom-quantity">{{bom.Q}}</td>
               <td>{{bom.Package}}</td>
