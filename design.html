@@ -1,3 +1,20 @@
+{% if page.terminologies %}
+<section class="section is-small">
+  <div class="container">
+    <h2 class="title is-1">Terminologies</h2>
+
+    <div class="content is-medium">
+      <ol>
+      {% for term in page.terminologies %}
+        <li><span class="has-background-grey-lighter">{{ term.term }}</span> - {{ term.definition }}</li>
+      {% endfor %}
+      </ol>
+    </div>
+
+  </div>
+</section>
+{% endif %}
+
 {% if page.user_stories %}
 <section class="section is-small">
   <div class="container">
