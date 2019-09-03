@@ -17,7 +17,7 @@
   <div class="container">
     <h2 class="title is-1">Firmware</h2>
 
-    <p class="subtitle is-4"><a href="{{site.github.repository_url}}/tree/master/firmware">Upload the code</a> with <code>make flash</code> command.</p>
+    <a class="button is-primary" href="{{site.github.repository_url}}/tree/master/firmware">Download code</a>
 
     {% if page.firmware_instructions %}
     <p>{{ page.firmware_instructions }}</p>
@@ -38,7 +38,7 @@
   <div class="container">
     <h2 class="title is-1">Test</h2>
 
-    <p class="subtitle is-4"><a href="{{site.github.repository_url}}/tree/master/test">Upload the code</a> with <code>make flash</code> command.</p>
+    <a class="button is-primary" href="{{site.github.repository_url}}/tree/master/test">Download test code</a>
     {% highlight c %}{%- include_relative test/test.ino -%}{% endhighlight %}
 
     <p class="subtitle is-4">Makefile</p>
