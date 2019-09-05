@@ -4,9 +4,18 @@
 
     <div class="content is-large">
       <ul>
-        <li><strong>Unique number of items:</strong> <span id="bom-unique"></span></li>
-        <li><strong>Total number of items:</strong> <span id="bom-total"></span></li>
-        <li><strong>Total number of vendors:</strong> <span id="bom-vendors"></span></li>
+        <li><strong>Unique number of items:</strong> <span>{{ site.data.bom.bom-uniq }}</span></li>
+        <li><strong>Total number of items:</strong> <span id="bom-total">{{ site.data.bom.bom-total }}</span></li>
+        <li><strong>Total number of vendors:</strong> <span id="bom-vendors">{{ site.data.bom.vendors }}</span></li>
+        <li><strong>Vendor names:</strong> <span id="bom-vendors">
+          {% for name in site.data.bom.vendor-names %}
+            {% if forloop.last == true %}
+              {{ name }}
+            {% else %}
+              {{ name }},
+            {% endif %}
+          {% endfor %}
+        </span></li>
       </ul>
     </div>
   </div>
