@@ -80,7 +80,7 @@
               <td>{{bom.Package}}</td>
               <td>{{bom.Value}}</td>
               <td>
-                {% if bom.Datasheet %}
+                {% if bom.Datasheet.size  > 0 %}
                   {% if bom.MPN %}
                   <a href="{{bom.Datasheet}}">{{bom.MPN}}</a><br>
                   {% else %}
