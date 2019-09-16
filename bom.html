@@ -81,13 +81,13 @@
               <td>{{bom.Value}}</td>
               <td>
                 {% if bom.Datasheet.size  > 0 %}
-                  {% if bom.MPN %}
+                  {% if bom.MPN.size  > 0 %}
                   <a href="{{bom.Datasheet}}">{{bom.MPN}}</a><br>
                   {% else %}
                   <a href="{{bom.Datasheet}}">Datasheet</a><br>
                   {% endif %}
                 {% else %}
-                  {% if bom.MPN %}
+                  {% if bom.MPN.size  > 0 %}
                   {{bom.MPN}}<br>
                   {% endif %}
                 {% endif %}
