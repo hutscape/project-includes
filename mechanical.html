@@ -30,7 +30,11 @@
           <td><code>{{item.height}} {{item.dimension_unit}}</code></td>
           <td><code>{{item.width}} {{item.dimension_unit}}</code></td>
           <td><code>{{item.depth}} {{item.dimension_unit}}</code></td>
-          <td><code>{{item.weight}} {{item.weight_unit}}</code></td>
+          <td>
+            {% if item.weight %}
+            <code>{{item.weight}} {{item.weight_unit}}</code>
+            {% endif %}
+          </td>
         </tr>
         {% endfor %}
       </tbody>
