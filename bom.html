@@ -69,7 +69,7 @@
             <th>Q</th>
             <th>Package</th>
             <th>Value</th>
-            <th>Manufacturer Part No.</th>
+            <th>Manufacturer Part No.<br> with Datasheet</th>
             <th>Manufacturer</th>
             <th>Vendor</th>
             <th>Unit Cost</th>
@@ -79,11 +79,13 @@
         <tbody>
           {% assign boms = site.data.bill_of_materials %}
           {% for bom in boms %}
-            {% if bom.Designator %}
             <tr class="bom-item">
               <td>{{ forloop.index }}</td>
               <td>
                 {{bom.Designator}}
+                {% if bom.Category.size > 0 %}
+                <br><span class="tag">{{bom.Category}}</span>
+                {% endif %}
                 {% if bom.DNP.size > 0 %}
                 <br>
                   {% if bom.DNP == bom.Designator %}
@@ -97,18 +99,30 @@
               <td>{{bom.Package}}</td>
               <td>{{bom.Value}}</td>
               <td>
-                {% if bom.Datasheet.size  > 0 %}
-                  {% if bom.MPN.size  > 0 %}
-                  <a href="{{bom.Datasheet}}">{{bom.MPN}}</a><br>
+                {% if bom.MPN.size  > 0 %}
+                  {% if bom.Datasheet.size  > 0 %}
+                    {{bom.MPN}} <br>
+                    <a href="{{bom.Datasheet}}">
+                      Datasheet
+                      <span class="icon has-text-info">
+                        <i class="fas fa-file-pdf"></i>
+                      </span>
+                    </a>
+                    <br>
                   {% else %}
-                  <a href="{{bom.Datasheet}}">Datasheet</a><br>
+                    {{bom.MPN}} <br>
                   {% endif %}
                 {% else %}
-                  {% if bom.MPN.size  > 0 %}
-                  {{bom.MPN}}<br>
+                  {% if bom.Datasheet.size  > 0 %}
+                  <a href="{{bom.Datasheet}}">
+                    Datasheet
+                    <span class="icon has-text-info">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                  </a>
+                  <br>
                   {% endif %}
                 {% endif %}
-                <span class="tag">{{bom.Category}}</span>
               </td>
               <td>{{bom.Manufacturer}}</td>
               <td>
@@ -121,10 +135,17 @@
               <td class="bom-cost">${{bom.Unit | round:2}}</td>
               <td>{{bom.Description}}</td>
             </tr>
-            {% endif %}
           {% endfor %}
         </tbody>
       </table>
+
+      <div class="content is-small">
+        <p>Short forms:</p>
+        <ul>
+          <li><strong>Designators</strong>: <a href="https://en.wikipedia.org/wiki/Reference_designator#Designators">Full list of reference designators</a></li>
+          <li><strong>DNP</strong>: Do not populate or place on the PCB</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
