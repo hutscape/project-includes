@@ -92,7 +92,12 @@
               <td>
                 {{bom.Designator}}
                 {% if bom.DNP.size > 0 %}
-                <br><span class="tag is-info">DNP</span>
+                <br>
+                  {% if bom.DNP == bom.Designator %}
+                  <span class="tag is-info">DNP all</span>
+                  {% else %}
+                    <span class="tag is-info">DNP {{ bom.DNP }}</span>
+                  {% endif %}
                 {% endif %}
               </td>
               <td class="bom-quantity">{{bom.Q}}</td>
@@ -114,7 +119,7 @@
               </td>
               <td>{{bom.Manufacturer}}</td>
               <td>
-                {% if bom.Link %}
+                {% if bom.Link.size  > 0 %}
                 <a href="{{bom.Link}}"><span class="bom-vendor">{{bom.Vendor}}</span></a>
                 {% else %}
                 <span class="bom-vendor">{{bom.Vendor}}</span>
