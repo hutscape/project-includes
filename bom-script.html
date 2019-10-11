@@ -1,42 +1,61 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/money.js/0.2.0/money.min.js" integrity="sha256-kCmDaPrZX+ae0D0EJQylHG7OAtg5kb1KMrYMmLLtHWQ=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/vue/0.12.16/vue.min.js"></script>
+
 <script>
-  fx.base = "USD"
-  fx.rates = { "SGD": 1.36, "EUR": 0.90, "GBP": 0.82, "RMB": 6.94, "INR": 69.67, "USD": 1 }
-  fx.settings = { from: "SGD", to: "USD" }
+fx.base = "USD"
+fx.rates = { "SGD": 1.36, "EUR": 0.90, "GBP": 0.82, "RMB": 6.94, "INR": 69.67, "USD": 1 }
+fx.settings = { from: "SGD", to: "USD" }
+var currencySymbols = { "SGD": "$", "EUR": "€", "GBP": "£", "RMB": "¥", "INR": "₹", "USD": "$" }
 
-  var currencySymbols = { "SGD": "$", "EUR": "€", "GBP": "£", "RMB": "¥", "INR": "₹", "USD": "$" }
-  var currencyEl = document.getElementById("currency")
+new Vue({
+  el: '#bom',
+  data: {
+    sortKey: 'designator',
+    reverse: false,
+    search: '',
+    currency: 'USD',
+    components: [
+    {% assign boms = site.data.bill_of_materials %}
+    {% for bom in boms %}
+      {
+        index: {{forloop.index}},
+        designator: "{{bom.Designator}}",
+        category: "{{bom.Category}}",
+        dnp: "{{bom.DNP}}",
+        quantity: "{{bom.Q}}",
+        package: "{{bom.Package}}",
+        value: "{{bom.Value}}",
+        mpn: "{{bom.MPN}}",
+        datasheet: "{{bom.Datasheet}}",
+        manufacturer: "{{bom.Manufacturer}}",
+        unit_cost: "{{bom.Unit}}",
+        vendor: "{{bom.Vendor}}",
+        vendor_link: "{{bom.Link}}",
+        description: "{{bom.Description}}",
+      },
+    {% endfor %}
+    ]
+  },
+  methods: {
+    getUnitCost: function (unitCost) {
+      return currencySymbols[this.currency] + fx.convert(unitCost, {from: "SGD", to: this.currency}).toFixed(2)
+    },
+    getTotalBomCost: function() {
+      totalCost = 0.0
 
-  function changeBomCost(currency) {
-    var bomCostEls = document.getElementsByClassName("bom-cost")
-    var bomCostList = [{% assign boms = site.data.bill_of_materials %} {% for bom in boms %} {{bom.Unit | round:2}}, {% endfor %}]
+      this.components.forEach(function(eachComponents) {
+        totalCost += eachComponents.unit_cost * eachComponents.quantity
+      })
 
-    for (var i = 0; i < bomCostEls.length; i++) {
-      bomCostEls[i].innerText = currencySymbols[currency] + fx.convert(bomCostList[i], {from: "SGD", to: currency}).toFixed(2)
+      return currencySymbols[this.currency] + fx.convert(totalCost, {from: "SGD", to: this.currency}).toFixed(2)
+    },
+    sortBy: function (sortKey) {
+      this.reverse = this.sortKey == sortKey ? !this.reverse : false
+      this.sortKey = sortKey
+    },
+    getDNP: function(dnp, designator) {
+      return dnp === designator ? 'all' : dnp
     }
   }
-
-  function changeTotalBomCost(currency) {
-    var bomCostEls = document.getElementsByClassName("bom-cost")
-    var bomTotalItemsEl = document.getElementsByClassName("bom-quantity")
-
-    var bomCost = 0.0;
-    for (var i = 0; i < bomCostEls.length; i++) {
-      if (bomCostEls[i].innerText) {
-        bomCost += parseFloat(bomCostEls[i].innerText.substr(1) * bomTotalItemsEl[i].innerText)
-      }
-    }
-
-    document.getElementById("bom-cost").innerHTML = currencySymbols[currency] + bomCost.toFixed(2)
-  }
-
-  // On first page load, change all BOM cost to the default USD currency
-  changeBomCost("USD")
-  changeTotalBomCost("USD")
-
-  // On change in dropdown, change all BOM cost to the chosen currency
-  currencyEl.onchange = function() {
-    changeBomCost(this.value)
-    changeTotalBomCost(this.value)
-  }
+})
 </script>

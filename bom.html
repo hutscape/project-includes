@@ -29,20 +29,21 @@
 </section>
 
 <section class="section is-small">
-  <div class="container">
+  <div class="container" id="bom" >
     <h2 class="title is-1">Bill of Materials</h2>
     <a href="{{site.url}}/_data/bill_of_materials.csv" class="button is-large is-fullwidth is-info">Download BOM in CSV</a>
     <br>
 
+    {% raw %}
     <div class="field is-horizontal">
-      <div class="field-label is-large">
+      <div class="field-label is-large" style="flex-grow:0">
         <label class="label">Currency</label>
       </div>
       <div class="field-body">
         <div class="field">
           <div class="control">
             <div class="select is-large">
-              <select id="currency">
+              <select v-model="currency">
                 <option>USD</option>
                 <option>EUR</option>
                 <option>GBP</option>
@@ -57,96 +58,80 @@
     </div>
 
     <div class="content is-large">
-      <strong>Total cost of items:</strong> <span id="bom-cost"></span>
+      <strong>Total cost of items: {{ getTotalBomCost() }}</strong>
     </div>
 
     <div class="table-container">
+      <div class="field">
+        <div class="controlt">
+          <input v-model="search" class="input is-large" type="text" placeholder="Search for components">
+        </div>
+      </div>
+
       <table class="table is-fullwidth is-hoverable">
         <thead>
           <tr>
             <th>#</th>
-            <th>Designator</th>
+            <th>
+              <a href="#bom" v-on="click: sortBy('designator')">
+                Designator
+                <span class="icon">
+                  <i v-if="reverse && sortKey == 'designator'" class="fas fa-caret-down"></i>
+                  <i v-if="!reverse && sortKey == 'designator'" class="fas fa-caret-up"></i>
+                </span>
+              </a>
+            </th>
             <th>Q</th>
             <th>Package</th>
             <th>Value</th>
-            <th>Manufacturer Part No.<br> with Datasheet</th>
+            <th>Manufacturer Part No.<br>with Datasheet</th>
             <th>Manufacturer</th>
             <th>Vendor</th>
-            <th>Unit Cost</th>
+            <th>
+              <a href="#bom" v-on="click: sortBy('unit_cost')">
+                Cost
+                <span class="icon">
+                  <i v-if="reverse && sortKey == 'unit_cost'" class="fas fa-caret-down"></i>
+                  <i v-if="!reverse && sortKey == 'unit_cost'" class="fas fa-caret-up"></i>
+                </span>
+              </a>
+            </th>
             <th>Description</th>
           </tr>
         </thead>
         <tbody>
-          {% assign boms = site.data.bill_of_materials %}
-          {% for bom in boms %}
-            <tr class="bom-item">
-              <td>{{ forloop.index }}</td>
-              <td>
-                {{bom.Designator}}
-                {% if bom.Category.size > 0 %}
-                <br><span class="tag">{{bom.Category}}</span>
-                {% endif %}
-                {% if bom.DNP.size > 0 %}
-                <br>
-                  {% if bom.DNP == bom.Designator %}
-                  <span class="tag is-info">DNP all</span>
-                  {% else %}
-                    <span class="tag is-info">DNP {{ bom.DNP }}</span>
-                  {% endif %}
-                {% endif %}
-              </td>
-              <td class="bom-quantity">{{bom.Q}}</td>
-              <td>{{bom.Package}}</td>
-              <td>{{bom.Value}}</td>
-              <td>
-                {% if bom.MPN.size  > 0 %}
-                  {% if bom.Datasheet.size  > 0 %}
-                    {{bom.MPN}} <br>
-                    <a href="{{bom.Datasheet}}">
-                      Datasheet
-                      <span class="icon has-text-info">
-                        <i class="fas fa-file-pdf"></i>
-                      </span>
-                    </a>
-                    <br>
-                  {% else %}
-                    {{bom.MPN}} <br>
-                  {% endif %}
-                {% else %}
-                  {% if bom.Datasheet.size  > 0 %}
-                  <a href="{{bom.Datasheet}}">
-                    Datasheet
-                    <span class="icon has-text-info">
-                      <i class="fas fa-file-pdf"></i>
-                    </span>
-                  </a>
-                  <br>
-                  {% endif %}
-                {% endif %}
-              </td>
-              <td>{{bom.Manufacturer}}</td>
-              <td>
-                {% if bom.Link.size  > 0 %}
-                <a href="{{bom.Link}}"><span class="bom-vendor">{{bom.Vendor}}</span></a>
-                {% else %}
-                <span class="bom-vendor">{{bom.Vendor}}</span>
-                {% endif %}
-              </td>
-              <td class="bom-cost">${{bom.Unit | round:2}}</td>
-              <td>{{bom.Description}}</td>
-            </tr>
-          {% endfor %}
+          <tr v-repeat="components | filterBy search | orderBy sortKey reverse">
+            <td>{{ index }}</td>
+            <td>
+              {{ designator }}
+              <br><span class="tag">{{ category }}</span>
+              <br v-if="dnp">
+              <span v-if="dnp" class="tag is-info">DNP {{ getDNP(dnp, designator) }}</span>
+            </td>
+            <td class="bom-quantity">{{ quantity }}</td>
+            <td>{{ package }}</td>
+            <td>{{ value }}</td>
+            <td>
+              <span v-if="mpn">{{ mpn }}</span>
+              <br v-if="datasheet">
+              <a v-if="datasheet" href="{{ datasheet }}">
+                Datasheet
+                <span class="icon has-text-info">
+                  <i class="fas fa-file-pdf"></i>
+                </span>
+              </a>
+            </td>
+            <td>{{ manufacturer }}</td>
+            <td>
+              <a v-if="vendor_link" href="{{ vendor_link }}">{{ vendor }}</a>
+            </td>
+            <td>{{ getUnitCost(unit_cost) }}</td>
+            <td>{{ description }}</td>
+          </tr>
         </tbody>
       </table>
-
-      <div class="content is-small">
-        <p>Short forms:</p>
-        <ul>
-          <li><strong>Designators</strong>: <a href="https://en.wikipedia.org/wiki/Reference_designator#Designators">Full list of reference designators</a></li>
-          <li><strong>DNP</strong>: Do not populate or place on the PCB</li>
-        </ul>
-      </div>
     </div>
+    {% endraw %}
   </div>
 </section>
 
