@@ -123,8 +123,12 @@
             </td>
             <td>{{ manufacturer }}</td>
             <td>
-              <a v-if="vendor_link" href="{{ vendor_link }}">{{ vendor }}</a>
-              <span v-if="!vendor_link">{{ vendor }}</span>
+              <a v-if="vendor_link" href="{{ vendor_link }}">
+                {{ vendor }}
+                <span class="icon">
+                  <i class="fas fa-external-link-alt"></i>
+                </span>
+              </a>
             </td>
             <td>{{ getUnitCost(unit_cost) }}</td>
             <td>{{ description }}</td>
