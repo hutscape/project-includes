@@ -4,6 +4,11 @@
       <div class="column">
         <h2 class="title is-1">ECAD Files</h2>
         <a href="{{site.github.repository_url}}/tree/master/hardware" class="button is-large is-fullwidth is-info">Download KiCad project files</a>
+
+        {% if page.gerber != false %}
+        <br>
+        <a href="{{site.github.repository_url}}/tree/master/hardware/gerbers" class="button is-large is-fullwidth is-info">Download Gerber files</a>
+        {% endif %}
       </div>
     </div>
 
