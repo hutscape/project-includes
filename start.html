@@ -47,6 +47,15 @@
         </a>
         {% endif %}
 
+        {% if downloads.gerber != false %}
+        <a class="button is-info is-outlined" href="{{site.github.repository_url}}/tree/master/hardware/gerbers">
+          <span class="icon">
+            <i class="fas fa-file-contract"></i>
+          </span>
+          <span>Gerber files</span>
+        </a>
+        {% endif %}
+
         {% for sw in page.software %}
         <a class="button is-success is-outlined" href="{{site.github.repository_url}}/tree/master/{{sw.code}}">
           <span class="icon">
