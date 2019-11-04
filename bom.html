@@ -72,6 +72,7 @@
         <thead>
           <tr>
             <th>#</th>
+            <th></th>
             <th>
               <a href="#bom" v-on="click: sortBy('designator')">
                 Designator
@@ -84,9 +85,16 @@
             <th>Q</th>
             <th>Package</th>
             <th>Value</th>
-            <th>Manufacturer Part No.</th>
             <th>Manufacturer</th>
-            <th>Vendor</th>
+            <th>
+              <a href="#bom" v-on="click: sortBy('vendor')">
+                Vendor
+                <span class="icon">
+                  <i v-if="reverse && sortKey == 'vendor'" class="fas fa-caret-down"></i>
+                  <i v-if="!reverse && sortKey == 'vendor'" class="fas fa-caret-up"></i>
+                </span>
+              </a>
+            </th>
             <th>
               <a href="#bom" v-on="click: sortBy('unit_cost')">
                 Cost
@@ -102,6 +110,7 @@
         <tbody>
           <tr v-repeat="components | filterBy search | orderBy sortKey reverse">
             <td>{{ $index +1 }}</td>
+            <td><input type="checkbox"></td>
             <td>
               {{ designator }}
               <br><span class="tag">{{ category }}</span>
@@ -120,8 +129,9 @@
                   <i class="fas fa-file-pdf"></i>
                 </span>
               </a>
+              <br>
+              <span v-if="manufacturer"><em>by {{ manufacturer }}</em></span>
             </td>
-            <td>{{ manufacturer }}</td>
             <td>
               <a v-if="vendor_link" href="{{ vendor_link }}">
                 {{ vendor }}
@@ -131,7 +141,7 @@
               </a>
             </td>
             <td>{{ getUnitCost(unit_cost) }}</td>
-            <td>{{ description }}</td>
+            <td><small>{{ description }}</small></td>
           </tr>
         </tbody>
       </table>
