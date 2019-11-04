@@ -18,9 +18,7 @@
 
     <div class="content is-medium">
       <div class="buttons">
-        {% assign downloads = page.downloads %}
-
-        {% if downloads.schematic != false %}
+        {% if page.download_schematic != false %}
         <a class="button is-info is-outlined" href="{{ site.url }}/hardware/docs/schematic.pdf">
           <span class="icon">
             <i class="far fa-file-pdf"></i>
@@ -29,7 +27,7 @@
         </a>
         {% endif %}
 
-        {% if downloads.layout != false %}
+        {% if page.download_layout != false %}
         <a class="button is-info is-outlined" href="{{ site.url }}/hardware/docs/layout.pdf">
           <span class="icon">
             <i class="far fa-file-pdf"></i>
@@ -38,7 +36,7 @@
         </a>
         {% endif %}
 
-        {% if downloads.kicad != false %}
+        {% if page.download_kicad != false %}
         <a class="button is-info is-outlined" href="{{site.github.repository_url}}/tree/master/hardware">
           <span class="icon">
             <i class="fas fa-file-contract"></i>
@@ -47,7 +45,7 @@
         </a>
         {% endif %}
 
-        {% if downloads.gerber != false %}
+        {% if page.download_gerber != false %}
         <a class="button is-info is-outlined" href="{{site.github.repository_url}}/tree/master/hardware/gerbers">
           <span class="icon">
             <i class="fas fa-file-contract"></i>
@@ -65,7 +63,7 @@
         </a>
         {% endfor %}
 
-        {% if downloads.bom != false %}
+        {% if page.download_bom != false %}
         <a class="button is-danger is-outlined" href="{{site.url}}/_data/bill_of_materials.csv">
           <span class="icon">
             <i class="fas fa-table"></i>
