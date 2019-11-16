@@ -116,6 +116,7 @@
               <br><span class="tag">{{ category }}</span>
               <br v-if="dnp">
               <span v-if="dnp" class="tag is-info">DNP {{ getDNP(dnp, designator) }}</span>
+              <span v-if="stock" class="tag is-warning">Stock: {{ stock }} </span>
             </td>
             <td class="bom-quantity">{{ quantity }}</td>
             <td>{{ package }}</td>

@@ -32,6 +32,9 @@ new Vue({
         vendor: "{{bom.Vendor}}",
         vendor_link: "{{bom.Link}}",
         description: "{{bom.Description}}",
+        {% if jekyll.environment == "development" %}
+          stock: "{{bom.Stock}}",
+        {% endif %}
       },
     {% endfor %}
     ]
