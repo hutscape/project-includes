@@ -11,7 +11,12 @@
     <div class="content is-medium">
       <ul>
         {% for li in le.list %}
-        <li>{{ li.name }}</li>
+        <li>
+          {{ li.name }}
+          {% if li.image %}
+          <img src="images/lessons/{{ li.image }}" alt="{{ li.name }}">
+          {% endif %}
+        </li>
         {% endfor %}
       </ul>
     </div>
