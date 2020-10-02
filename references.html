@@ -18,7 +18,9 @@
               <a href="{{ project.url }}">{{ project.name }}</a>
               <span class="tag is-light">{{ project.year }}</span>
               <span class="tag is-light">{{ project.type }}</span>
+              {% if project.cost %}
               <span class="tag is-light">USD {{ project.cost }}</span>
+              {% endif %}
             </td>
             <td>
               {% if project.components %}
