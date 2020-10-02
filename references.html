@@ -1,3 +1,42 @@
+{% if page.similar %}
+<section class="section is-small">
+  <div class="container">
+    <h2 class="title is-1">Similar projects</h2>
+
+    <div class="content is-medium">
+      <table class="table is-fullwidth is-hoverable">
+        <thead>
+          <tr>
+            <th>Project</th>
+            <th>Attributes</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for project in page.similar %}
+          <tr>
+            <td>
+              <a href="{{ project.url }}">{{ project.name }}</a>
+              <span class="tag is-light">{{ project.year }}</span>
+              <span class="tag is-light">{{ project.type }}</span>
+              <span class="tag is-light">USD {{ project.cost }}</span>
+            </td>
+            <td>
+              {% if project.components %}
+                {% for comp in project.components %}
+                  {{ comp.type }}: <a href="{{ comp.datasheet_url }}">{{ comp.mpn }}</a>
+                  <br>
+                {% endfor %}
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+    </div>
+  </div>
+</section>
+{% endif %}
+
 {% assign references = page.references %}
 {% for ref in references %}
 <section class="section is-small">
