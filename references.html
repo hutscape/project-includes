@@ -16,16 +16,17 @@
           <tr>
             <td>
               <a href="{{ project.url }}">{{ project.name }}</a>
-              <span class="tag is-light">{{ project.year }}</span>
               <span class="tag is-light">{{ project.type }}</span>
+              <span class="tag is-dark">{{ project.year }}</span>
               {% if project.cost %}
-              <span class="tag is-light">USD {{ project.cost }}</span>
+              <span class="tag is-info">USD {{ project.cost }}</span>
               {% endif %}
             </td>
             <td>
               {% if project.components %}
                 {% for comp in project.components %}
-                  {{ comp.type }}: <a href="{{ comp.datasheet_url }}">{{ comp.mpn }}</a>
+                  {{ comp.type }}{% if comp.mpn %}:{% endif %}
+                  <a href="{{ comp.datasheet_url }}">{{ comp.mpn }}</a>
                   <br>
                 {% endfor %}
               {% endif %}
