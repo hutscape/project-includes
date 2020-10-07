@@ -17,7 +17,11 @@
             <td>
               <a href="{{ project.url }}">{{ project.name }}</a>
               <span class="tag is-light">{{ project.type }}</span>
+
+              {% if project.year %}
               <span class="tag is-dark">{{ project.year }}</span>
+              {% endif %}
+
               {% if project.cost %}
               <span class="tag is-info">USD {{ project.cost }}</span>
               {% endif %}
