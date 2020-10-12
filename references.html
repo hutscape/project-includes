@@ -29,8 +29,8 @@
             <td>
               {% if project.components %}
                 {% for comp in project.components %}
-                  {{ comp.type }}{% if comp.mpn %}:{% endif %}
-                  <a href="{{ comp.datasheet_url }}">{{ comp.mpn }}</a>
+                  {{ comp.type }}{% if comp.name %}:{% endif %}
+                  <a href="{{ comp.url }}">{{ comp.name }}</a>
                   <br>
                 {% endfor %}
               {% endif %}
