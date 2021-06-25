@@ -13,12 +13,28 @@
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/a11y-dark.min.css">
   <link href="//fonts.googleapis.com/css?family=Schoolbell&display=swap" rel="stylesheet">
   {% if page.url == "/schedule" %}
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/frappe-gantt/0.3.0/frappe-gantt.css">
-  <style> .gantt-container { overflow: hidden; }</style>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/frappe-gantt/0.5.0/frappe-gantt.min.css"
+    integrity="sha512-j2JEichKxgq6udg7yAJpsSwGLrHtxeTinqv4kzc+SXCJEhYzDT/JclOOOU28pD1jk1IEdt2FCQ/CnqdOzt7e6Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   {% endif %}
   <style>
-    .highlight { max-height: 500px; overflow: auto; margin: 24px 0;}
-    .handwriting { font-family: 'Schoolbell', cursive; transform: rotate(-5deg); margin: 0 0.5em; line-height: 1; }
-    @media only screen and (min-width: 1025px) { html.has-navbar-fixed-top { padding-top: 5.25rem; } }
+    .highlight {
+      max-height: 500px;
+      overflow: auto;
+      margin: 24px 0;
+    }
+
+    .handwriting {
+      font-family: 'Schoolbell', cursive;
+      transform: rotate(-5deg);
+      margin: 0 0.5em;
+      line-height: 1;
+    }
+
+    @media only screen and (min-width: 1025px) {
+      html.has-navbar-fixed-top {
+        padding-top: 5.25rem;
+      }
+    }
   </style>
 </head>
