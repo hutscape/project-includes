@@ -169,10 +169,7 @@
   </div>
 </section>
 
-{%- if jekyll.environment == 'development' and site.google_analytics -%}
 <!-- FIXME: If div is used instead of span on the desktop view, the right side view of the PCB in canvas is not displayed. -->
-{%- endif -%}
 <span class="is-hidden-touch">
   {% include_relative bom/ibom.html %}
 </span>
-{% endif %}
