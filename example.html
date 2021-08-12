@@ -29,7 +29,7 @@
             <li>
               {{ step.step }}
               {% if step.image %}
-              <a href="/images/examples/{{ step.image }}"><img src="/images/examples/{{ step.image }}"
+              <a href="{{ site.url}}/images/examples/{{ step.image }}"><img src="{{ site.url}}/images/examples/{{ step.image }}"
                   alt="{{step.step}}"></a>
               {% endif %}
             </li>
@@ -41,8 +41,8 @@
       <div class="column is-half">
         <h2 class="title is-2">Setup</h2>
         <div class="content is-medium">
-          <a href="/images/examples/{{page.path | replace:'.md','' | remove: '_examples/'}}-setup.jpg"><img
-              src="/images/examples/{{page.path | replace:'.md','' | remove: '_examples/'}}-setup.jpg"
+          <a href="{{ site.url}}/images/examples/{{page.path | replace:'.md','' | remove: '_examples/'}}-setup.jpg"><img
+              src="{{ site.url}}/images/examples/{{page.path | replace:'.md','' | remove: '_examples/'}}-setup.jpg"
               alt="{{ page.name }} setup"></a>
         </div>
       </div>
@@ -50,8 +50,8 @@
       <div class="column is-half">
         <h2 class="title is-2">Serial prints</h2>
         <div class="content is-medium">
-          <a href="/images/examples/{{page.path | replace:'.md','' | remove: '_examples/'}}-print.jpg"><img
-              src="/images/examples/{{page.path | replace:'.md','' | remove: '_examples/'}}-print.jpg"
+          <a href="{{ site.url}}/images/examples/{{page.path | replace:'.md','' | remove: '_examples/'}}-print.jpg"><img
+              src="{{ site.url}}/images/examples/{{page.path | replace:'.md','' | remove: '_examples/'}}-print.jpg"
               alt="{{ page.name }} setup"></a>
         </div>
       </div>
