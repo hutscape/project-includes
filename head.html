@@ -1,10 +1,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  {% if page.title %}
-  <title>{{ site.title }} | {{ page.title }}</title>
+  {% if page.url == "/" %}
+    <title>{{ site.title }} | {{ site.description }}</title>
   {% else %}
-  <title>{{ site.title }} | {{ site.description }}</title>
+    {% if page.title %}
+      <title>{{ site.title }} | {{ page.title }}</title>
+    {% else %}
+      <title>{{ site.title }} | {{ site.description }}</title>
+    {% endif %}
   {% endif %}
   <meta name="description" content="{{site.description}}">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.9.2/css/bulma.min.css"
