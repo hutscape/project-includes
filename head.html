@@ -2,13 +2,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {% if page.url == "/" %}
-    <title>{{ site.title }} | {{ site.description }}</title>
+  <title>{{ site.title }} | {{ site.description }}</title>
   {% else %}
-    {% if page.title %}
-      <title>{{ site.title }} | {{ page.title }}</title>
-    {% else %}
-      <title>{{ site.title }} | {{ site.description }}</title>
-    {% endif %}
+  {% if page.title %}
+  <title>{{ site.title }} | {{ page.title }}</title>
+  {% else %}
+  <title>{{ site.title }} | {{ site.description }}</title>
+  {% endif %}
   {% endif %}
   <meta name="description" content="{{site.description}}">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.9.2/css/bulma.min.css"
@@ -16,7 +16,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/a11y-dark.min.css">
   <link href="//fonts.googleapis.com/css?family=Schoolbell&display=swap" rel="stylesheet">
-  {% if page.url == "/schedule" %}
+  {% if page.url == "/others" %}
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/frappe-gantt/0.5.0/frappe-gantt.min.css"
     integrity="sha512-j2JEichKxgq6udg7yAJpsSwGLrHtxeTinqv4kzc+SXCJEhYzDT/JclOOOU28pD1jk1IEdt2FCQ/CnqdOzt7e6Q=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -34,5 +34,6 @@
       margin: 0 0.5em;
       line-height: 1;
     }
+
   </style>
 </head>
