@@ -5,13 +5,13 @@
       <div class="level">
         <div class="level-left">
           <h1 class="title is-1"> {{ site.title }}</h1>
-          <p class="handwriting has-text-grey">V{{ site.data.project.version }}</p>
+          <p class="handwriting has-text-grey">V{{ site.project.version }}</p>
         </div>
       </div>
 
       <p class="subtitle is-1"> {{ site.description }} </p>
       <div class="field is-grouped is-grouped-multiline">
-        {% if site.data.project.power %}
+        {% if site.project.power %}
         <div class="control">
           <div class="tags has-addons">
             <span class="tag is-medium is-dark">
@@ -19,12 +19,12 @@
                 <i class="fas fa-battery-half"></i>
               </span>
               power</span>
-            <span class="tag is-medium is-white">{{ site.data.project.power }}</span>
+            <span class="tag is-medium is-white">{{ site.project.power }}</span>
           </div>
         </div>
         {% endif %}
 
-        {% if site.data.project.wireless %}
+        {% if site.project.wireless %}
         <div class="control">
           <div class="tags has-addons">
             <span class="tag is-medium is-dark">
@@ -33,12 +33,12 @@
               </span>
               wireless
             </span>
-            <span class="tag is-medium is-white">{{ site.data.project.wireless }}</span>
+            <span class="tag is-medium is-white">{{ site.project.wireless }}</span>
           </div>
         </div>
         {% endif %}
 
-        {% if site.data.project.sensor %}
+        {% if site.project.sensor %}
         <div class="control">
           <div class="tags has-addons">
             <span class="tag is-medium is-dark">
@@ -47,12 +47,12 @@
               </span>
               sensor
             </span>
-            <span class="tag is-medium is-white">{{ site.data.project.sensor }}</span>
+            <span class="tag is-medium is-white">{{ site.project.sensor }}</span>
           </div>
         </div>
         {% endif %}
 
-        {% if site.data.project.mcu %}
+        {% if site.project.mcu %}
         <div class="control">
           <div class="tags has-addons">
             <span class="tag is-medium is-dark">
@@ -61,25 +61,25 @@
               </span>
               mcu
             </span>
-            <span class="tag is-medium is-white">{{ site.data.project.mcu }}</span>
+            <span class="tag is-medium is-white">{{ site.project.mcu }}</span>
           </div>
         </div>
         {% endif %}
 
-        {% if site.data.project.ota %}
+        {% if site.project.ota %}
         <div class="control">
           <div class="tags has-addons">
             <span class="tag is-medium is-dark">ota?</span>
-            <span class="tag is-medium is-white">{{ site.data.project.ota }}</span>
+            <span class="tag is-medium is-white">{{ site.project.ota }}</span>
           </div>
         </div>
         {% endif %}
 
-        {% if site.data.project.battery-life %}
+        {% if site.project.battery-life %}
         <div class="control">
           <div class="tags has-addons">
             <span class="tag is-medium is-dark">battery life</span>
-            <span class="tag is-medium is-white">{{ site.data.project.battery-life }}</span>
+            <span class="tag is-medium is-white">{{ site.project.battery-life }}</span>
           </div>
         </div>
         {% endif %}
@@ -87,41 +87,41 @@
       </div>
 
       <div class="field is-grouped is-grouped-multiline">
-        {% if site.data.project.bom-total %}
+        {% if site.project.bom-total %}
         <div class="control">
           <div class="tags has-addons">
             <span class="tag is-medium is-white">bom items</span>
-            <span class="tag is-medium">{{ site.data.project.bom-total }}</span>
+            <span class="tag is-medium">{{ site.project.bom-total }}</span>
           </div>
         </div>
         {% endif %}
 
-        {% if site.data.project.bom-cost-usd %}
+        {% if site.project.bom-cost-usd %}
         <div class="control">
           <div class="tags has-addons">
             <span class="tag is-medium is-white">bom cost</span>
-            <span class="tag is-medium">USD ${{ site.data.project.bom-cost-usd }}</span>
+            <span class="tag is-medium">USD ${{ site.project.bom-cost-usd }}</span>
           </div>
         </div>
         {% endif %}
 
-        {% if site.data.project.vendors %}
+        {% if site.project.vendors %}
         <div class="control">
           <div class="tags has-addons">
             <span class="tag is-medium is-white">vendors</span>
-            <span class="tag is-medium">{{ site.data.project.vendors }}</span>
+            <span class="tag is-medium">{{ site.project.vendors }}</span>
           </div>
         </div>
         {% endif %}
 
-        {% if site.data.project.status %}
+        {% if site.project.status %}
         <div class="control">
           <div class="tags has-addons">
             <span class="tag is-medium is-white">status</span>
-            {% if site.data.project.status == "completed" %}
-            <span class="tag is-medium">{{ site.data.project.status }} in {{ site.data.project.completion }}</span>
+            {% if site.project.status == "completed" %}
+            <span class="tag is-medium">{{ site.project.status }} in {{ site.project.completion }}</span>
             {% else %}
-            <span class="tag is-medium is-warning">{{ site.data.project.status }}</span>
+            <span class="tag is-medium is-warning">{{ site.project.status }}</span>
             {% endif %}
           </div>
         </div>
