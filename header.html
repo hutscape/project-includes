@@ -115,18 +115,17 @@
 
         {% if site.project.status %}
         <div class="control">
+          {% if site.project.status == "completed" %}
           <div class="tags has-addons">
-            <span class="tag is-medium is-white">status</span>
-            {% if site.project.status == "completed" %}
-            <span class="tag is-medium">{{ site.project.status }} in {{ site.project.completion }}</span>
-            {% else %}
-            <span class="tag is-medium is-warning">{{ site.project.status }}</span>
-            {% endif %}
+            <span class="tag is-medium is-white">{{ site.project.status }}</span>
+            <span class="tag is-medium is-light is-success">{{ site.project.completion }}</span>
           </div>
+          {% else %}
+          <span class="tag is-medium is-light is-warning">{{ site.project.status }}</span>
+          {% endif %}
         </div>
-        {% endif %}
-
       </div>
+      {% endif %}
     </div>
   </div>
 </section>
