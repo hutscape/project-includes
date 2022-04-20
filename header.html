@@ -121,7 +121,10 @@
             <span class="tag is-medium is-light is-success">{{ site.project.completion }}</span>
           </div>
           {% else %}
-          <span class="tag is-medium is-light is-warning">{{ site.project.status }}</span>
+          <div class="tags has-addons">
+            <span class="tag is-medium is-white">{{ site.project.status }}</span>
+            <span class="tag is-medium is-light is-warning">since {{ site.project.started }}</span>
+          </div>
           {% endif %}
         </div>
       </div>
