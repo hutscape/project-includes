@@ -1,0 +1,29 @@
+<section class="section is-small">
+  <div class="container">
+    <h2 class="title is-1">Overview</h2>
+
+    <div class="content is-large">
+      <ul>
+        <li>
+          <strong>Total parts:</strong> <span>{{ site.data.bom.bom-total }}</span>
+          {% if site.data.bom.bom-total-populate %}
+          <ul>
+            <li><strong>Total parts to populate:</strong> <span>{{ site.data.bom.bom-total-populate }}</span></li>
+          </ul>
+          {% endif %}
+        </li>
+        <li><strong>Unique parts:</strong> <span>{{ site.data.bom.bom-uniq }}</span></li>
+        <li><strong>Total vendors:</strong> <span>{{ site.data.bom.vendors }}</span></li>
+        <li><strong>Vendor names:</strong> <span>
+            {% for name in site.data.bom.vendor-names %}
+            {% if forloop.last == true %}
+            {{ name }}
+            {% else %}
+            {{ name }},
+            {% endif %}
+            {% endfor %}
+          </span></li>
+      </ul>
+    </div>
+  </div>
+</section>
