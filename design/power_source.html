@@ -1,0 +1,75 @@
+{% if page.power.source %}
+<section class="section is-small">
+  <div class="container">
+    <h2 class="title is-1">Power overview</h2>
+    <div class="columns is-desktop">
+      <div class="column">
+        <div class="card">
+          <header class="card-header">
+            <p class="card-header-title">
+              Power source
+            </p>
+          </header>
+          <div class="card-content">
+            <div class="content">
+              {{ page.power.source }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="card">
+          <header class="card-header">
+            <p class="card-header-title">
+              Battery life
+            </p>
+          </header>
+          {% if page.power.battery_life %}
+          <div class="card-content">
+            <div class="content">
+              {{ page.power.battery_life }}
+            </div>
+          </div>
+          {% if page.power.components and page.power.calculation %}
+          <footer class="card-footer">
+            {% if page.power.components %}
+            <a href="#power-consumption-of-main-components" class="card-footer-item">Main components</a>
+            {% endif %}
+
+            {% if page.power.calculation %}
+            <a href="#power-calculation" class="card-footer-item">Calculation</a>
+            {% endif %}
+          </footer>
+          {% endif %}
+          {% else %}
+          <div class="card-content">
+            <div class="content">
+              Coming soon...
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      <div class="column">
+        <div class="card">
+          <header class="card-header">
+            <p class="card-header-title">
+              Charging duration
+            </p>
+          </header>
+          {% if page.power.charging_duration %}
+          <div class="card-content">
+            <div class="content">
+              {{ page.power.charging_duration }}
+            </div>
+            <div class="content">
+              {{ page.power.charging_instruction }}
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
