@@ -1,0 +1,12 @@
+{% assign check_content = content | strip_newlines %}
+{% if check_content != "" %}
+<section class="section is-small">
+  <div class="container">
+    <h2 class="title is-2">Details</h2>
+
+    <div class="content is-medium">
+      {{ content }}
+    </div>
+  </div>
+</section>
+{% endif %}

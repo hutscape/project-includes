@@ -1,0 +1,18 @@
+{% if page.photos %}
+<section class="section is-small">
+  <div class="container">
+    <h2 class="title is-2">Photos</h2>
+    <div class="container">
+      <div class="columns is-multiline is-desktop">
+        {% for photo in page.photos %}
+        <div class="column is-half">
+          <a href="{{ site.url}}/images/examples/{{ photo.filename }}"><img
+              src="{{ site.url}}/images/examples/{{ photo.filename }}"
+              alt="{{ page.title }} Photo {{forloop.index }}"></a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}

@@ -1,0 +1,88 @@
+<section class="section is-small">
+  <div class="container">
+    <div class="columns is-multiline is-desktop">
+      <div class="column is-half">
+        <h2 class="title is-1">{{ page.title}}</h2>
+        <div class="tags">
+          {% for feat in page.features %}
+          <span class="tag is-warning is-light">{{ feat }}</span>
+          {% endfor %}
+          {% for v in page.versions %}
+          <span class="tag is-link is-light">{{ v.name }} version {{v.version}}</span>
+          {% endfor %}
+          <span class="tag">{{ page.difficulty }}</span>
+        </div>
+
+        <div class="content is-medium">
+          <p>{{ page.description }}</p>
+          <hr>
+
+          {% if page.dependancies or page.prerequisites or page.components %}
+          <h2 class="title is-2">Before starting</h2>
+          {% endif %}
+        </div>
+
+        <div class="content">
+          <div class="tile is-ancestor">
+            <div class="tile is-12 is-vertical is-parent">
+              {% if page.dependancies %}
+              <div class="tile is-child box">
+                <p class="subtitle">Dependancies</p>
+                <p>
+                  {% for dep in page.dependancies %}
+                  {% if forloop.last == true %}
+                  <a href="{{ dep.url }}">{{ dep.name }}</a>
+                  {% else %}
+                  <a href="{{ dep.url }}">{{ dep.name }}</a>,
+                  {% endif %}
+                  {% endfor %}
+                </p>
+              </div>
+              {% endif %}
+
+              {% if page.prerequisites %}
+              <div class="tile is-child box">
+                <p class="subtitle">Pre-requisites</p>
+                <p>
+                  {% for prereq in page.prerequisites %}
+                  {% if forloop.last == true %}
+                  <a href="{{ prereq.url }}">{{ prereq.name }}</a>
+                  {% else %}
+                  <a href="{{ prereq.url }}">{{ prereq.name }}</a>,
+                  {% endif %}
+                  {% endfor %}
+                </p>
+              </div>
+              {% endif %}
+
+              {% if page.components %}
+              <div class="tile is-child box">
+                <p class="subtitle">Buy the components</p>
+                <p>
+                  {% for comp in page.components %}
+                  {% if forloop.last == true %}
+                  <a href="{{ comp.url }}">{{ comp.name }}</a>
+                  {% else %}
+                  <a href="{{ comp.url }}">{{ comp.name }}</a>,
+                  {% endif %}
+                  {% endfor %}
+                </p>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% if page.images.prototype %}
+      <div class="column is-half">
+        <div class="content is-medium">
+          <a href="{{ site.url}}/images/examples/{{ page.images.prototype }}">
+            <img src="{{ site.url}}/images/examples/{{ page.images.prototype }}" alt="{{ page.name }} setup">
+          </a>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
