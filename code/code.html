@@ -5,11 +5,11 @@
 
     <a href="{{ site.github.repository_url }}/tree/master/{{page.path | replace:'.md',''}}" class="button
     is-primary">Download code</a>
-    {% highlight c %}{% include_relative {{ page.path | remove: "_examples/" | remove: ".md" }}/{{ page.path | remove:
-    "_examples/" | remove: ".md" }}.ino %}{% endhighlight %}
+    {% highlight c %}{% include_relative {{ page.path | remove: "_code/" | remove: ".md" }}/{{ page.path | remove:
+    "_code/" | remove: ".md" }}.ino %}{% endhighlight %}
 
     <h2 class="title is-2">Makefile</h2>
-    {% highlight make %}{% include_relative {{ page.path | remove: "_examples/" | remove: ".md" }}/Makefile %}{%
+    {% highlight make %}{% include_relative {{ page.path | remove: "_code/" | remove: ".md" }}/Makefile %}{%
     endhighlight %}
   </div>
 </section>
