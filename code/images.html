@@ -12,8 +12,8 @@
             <li>
               {{ step.step }}
               {% if step.image %}
-              <a href="{{ site.url}}/images/examples/{{ step.image }}"><img
-                  src="{{ site.url}}/images/examples/{{ step.image }}" alt="{{step.step}}"></a>
+              <a href="{{ site.url}}/images/code/{{ step.image }}"><img src="{{ site.url}}/images/code/{{ step.image }}"
+                  alt="{{step.step}}"></a>
               {% endif %}
             </li>
             {% endfor %}
@@ -27,8 +27,8 @@
         <h2 class="title is-2">Serial console</h2>
         <p class="subtitle is-4">Serial output from the firmware.</p>
         <div class="content is-medium">
-          <a href="{{ site.url}}/images/examples/{{ page.images.console }}">
-            <img src="{{ site.url}}/images/examples/{{ page.images.console }}" alt="{{ page.name }} setup">
+          <a href="{{ site.url}}/images/code/{{ page.images.console }}">
+            <img src="{{ site.url}}/images/code/{{ page.images.console }}" alt="{{ page.name }} setup">
           </a>
         </div>
       </div>
@@ -39,8 +39,8 @@
         <h2 class="title is-2">Schematic</h2>
         <p class="subtitle is-4">Wire up the hardware accordingly</p>
         <div class="content is-medium">
-          <a href="{{ site.url}}/images/examples/{{ page.images.schematic }}"><img
-              src="{{ site.url}}/images/examples/{{ page.images.schematic }}" alt="{{ page.name }} setup"></a>
+          <a href="{{ site.url}}/images/code/{{ page.images.schematic }}"><img
+              src="{{ site.url}}/images/code/{{ page.images.schematic }}" alt="{{ page.name }} setup"></a>
         </div>
       </div>
       {% endif %}
