@@ -7,7 +7,12 @@
     <div class="content is-medium">
       <ol>
         {% for li in ref.list %}
-        <li><a href="{{ li.url }}">{{ li.name }}</a></li>
+        <li>
+          <a href="{{ li.url }}">{{ li.name }}</a>
+          {% if li.description %}
+          : {{ li.description }}
+          {% endif %}
+        </li>
         {% endfor %}
       </ol>
     </div>
