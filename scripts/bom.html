@@ -14,7 +14,7 @@
       sortKey: 'designator',
       reverse: false,
       search: '',
-      defaultCurrencyToDisplay: 'USD',
+      currency: 'USD',
       originalCurrencyInBOM: '{{ site.data.bom.currency }}',
       components: [
         {% assign boms = site.data.bill_of_materials %}
@@ -43,7 +43,7 @@
     },
   methods: {
     getUnitCost: function (unitCost) {
-      return currencySymbols[this.defaultCurrencyToDisplay] + fx.convert(unitCost, { from: this.originalCurrencyInBOM, to: this.defaultCurrencyToDisplay }).toFixed(2)
+      return currencySymbols[this.currency] + fx.convert(unitCost, { from: this.originalCurrencyInBOM, to: this.currency }).toFixed(2)
     },
     getTotalBomCost: function() {
       totalCost = 0.0
@@ -52,7 +52,7 @@
         totalCost += eachComponents.unit_cost * eachComponents.quantity
       })
 
-      return currencySymbols[this.defaultCurrencyToDisplay] + fx.convert(totalCost, { from: this.originalCurrencyInBOM, to: this.defaultCurrencyToDisplay }).toFixed(2)
+      return currencySymbols[this.currency] + fx.convert(totalCost, { from: this.originalCurrencyInBOM, to: this.currency }).toFixed(2)
     },
     sortBy: function (sortKey) {
       this.reverse = this.sortKey == sortKey ? !this.reverse : false
