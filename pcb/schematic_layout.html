@@ -1,0 +1,33 @@
+<section class="section is-small">
+  <div class="container">
+    <div class="columns is-desktop">
+      <div class="column">
+        <h2 class="title is-1">Schematic</h2>
+        <a href="{{site.url}}/pcb/docs/schematic.pdf" class="button is-large is-fullwidth is-info">Download
+          schematic PDF</a>
+
+        <br>
+        <a href="{{site.url}}/images/pcb/schematic.png"><img src="{{site.url}}/images/pcb/schematic.png"
+            alt="Schematic"></a>
+      </div>
+
+      <div class="column">
+        <h2 class="title is-1">PCB Layout</h2>
+
+        {% if page.pcb_layout == false %}
+        <p class="subtitle">Coming soon...</p>
+        {% else %}
+        <a href="{{site.url}}/pcb/docs/layout.pdf" class="button is-large is-fullwidth is-info">Download PCB layout
+          PDF</a>
+
+        <br>
+        <a href="{{site.url}}/images/pcb/layout-front.png"><img src="{{site.url}}/images/pcb/layout-front.png"
+            alt="Layout front"></a>
+        <br>
+        <a href="{{site.url}}/images/pcb/layout-back.png"><img src="{{site.url}}/images/pcb/layout-back.png"
+            alt="Layout back"></a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,26 @@
+<section class="section is-small">
+  <div class="container">
+    <div class="columns is-desktop">
+      <div class="column">
+        <h2 class="title is-1">ECAD Files</h2>
+        <a href="{{site.github.repository_url}}/tree/master/pcb" class="button is-large is-fullwidth is-info">Download
+          KiCad project files</a>
+
+        {% if page.gerber != false %}
+        <br>
+        <a href="{{site.github.repository_url}}/releases" class="button is-large is-fullwidth is-info">Download Gerber
+          files</a>
+        {% endif %}
+      </div>
+    </div>
+
+    {% if page.three_d != false %}
+    <div class="columns is-desktop">
+      <div class="column"><a href="{{site.url}}/images/pcb/3dview-front.png"><img
+            src="{{site.url}}/images/pcb/3dview-front.png" alt="3D view Front"></a></div>
+      <div class="column"><a href="{{site.url}}/images/pcb/3dview-back.png"><img
+            src="{{site.url}}/images/pcb/3dview-back.png" alt="3D view Back"></a></div>
+    </div>
+    {% endif %}
+  </div>
+</section>
