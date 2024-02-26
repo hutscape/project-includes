@@ -1,0 +1,31 @@
+{% if page.manufacturing_params %}
+<section class="section is-small">
+  <div class="container">
+    <h2 class="title is-1">Manufacturing parameters</h2>
+
+    <div class="columns is-desktop">
+      <div class="column">
+        <div class="content is-large">
+          <ul>
+            {% for param in page.manufacturing_params %}
+            <li>
+              <strong>{{ param.name }}:</strong> <span>{{ param.value }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="content is-large">
+          {% if page.manufacturing_params_image %}
+          <a href="../images/pcb/{{ page.manufacturing_params_image }}"><img src="../images/pcb/{{ page.manufacturing_params_image }}"
+              alt="Manufacturing parameters" /></a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+{% endif %}
