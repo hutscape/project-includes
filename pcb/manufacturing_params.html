@@ -19,7 +19,8 @@
       <div class="column">
         <div class="content is-large">
           {% if page.manufacturing_params_image %}
-          <a href="../images/pcb/{{ page.manufacturing_params_image }}"><img src="../images/pcb/{{ page.manufacturing_params_image }}"
+          <a href="{{ site.url}}/images/pcb/{{ page.manufacturing_params_image }}"><img
+              src="{{ site.url }}/images/pcb/{{ page.manufacturing_params_image }}"
               alt="Manufacturing parameters" /></a>
           {% endif %}
         </div>
