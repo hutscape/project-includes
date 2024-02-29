@@ -1,0 +1,17 @@
+{% if page.photos %}
+<section class="section is-small">
+  <div class="container">
+    <h2 class="title is-1">Photos</h2>
+
+    <div class="columns is-multiline is-desktop">
+      {% for photo in page.photos %}
+      <div class="column is-half">
+        <a href="{{ site.url}}/images/case/{{ photo.name }}">
+          <img src="{{ site.url}}/images/case/{{ photo.name }}" alt="{{ photo.caption }}">
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}

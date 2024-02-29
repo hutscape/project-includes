@@ -1,0 +1,27 @@
+<section class="section is-small">
+  <div class="container">
+    <div class="columns is-desktop">
+      <div class="column">
+        <h2 class="title is-1">CAD Files</h2>
+        <a href="{{site.github.repository_url}}/tree/master/case/case.FCStd"
+          class="button is-large is-fullwidth is-info">Download FreeCAD project file</a>
+        <br>
+        {% if page.case != false %}
+        <a href="{{site.github.repository_url}}/tree/master/case/exports"
+          class="button is-large is-fullwidth is-info">Download exported STL
+          files</a>
+        {% endif %}
+      </div>
+    </div>
+
+    {% if page.case != false %}
+    <div class="columns is-desktop">
+      <div class="column"><a href="{{site.url}}/images/case/case.png"><img src="{{site.url}}/images/case/case.png"
+            alt="Electronics enclosure"></a></div>
+      <div class="column"><a href="{{site.url}}/images/case/case-electronics.png"><img
+            src="{{site.url}}/images/case/case-electronics.png" alt="Electronics enclosure with PCB and components"></a>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</section>
