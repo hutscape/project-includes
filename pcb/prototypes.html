@@ -2,13 +2,24 @@
   <div class="container">
     <h2 class="title is-1">Prototypes</h2>
 
+    {% for i in (1..page.max_prototype_images) %}
+    {% assign mod = forloop.index | modulo: 2 %}
+
+    {% if mod == 1 %}
     <div class="columns is-desktop">
+      {% endif %}
+
       <div class="column">
-        <img src="{{site.url}}/images/prototype/prototype-1.jpg" alt="Prototype 1">
+        <img src="{{site.url}}/images/prototype/prototype-{{i}}.jpg" alt="Prototype {{i}}">
       </div>
-      <div class="column">
-        <img src="{{site.url}}/images/prototype/prototype-2.jpg" alt="Prototype 2">
-      </div>
+
+      {% if i == page.max_prototype_images %}
+      <div class="column"> </div>
+      {% endif %}
+
+      {% if mod == 0 %}
     </div>
+    {% endif %}
+    {% endfor %}
   </div>
 </section>
