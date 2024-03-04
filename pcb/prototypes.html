@@ -4,7 +4,7 @@
 
     {% for i in (1..page.max_prototype_images) %}
     {% assign mod = forloop.index | modulo: 2 %}
-
+    {% assign is_odd = page.max_prototype_images | modulo: 2 %}
     {% if mod == 1 %}
     <div class="columns is-desktop">
       {% endif %}
@@ -13,7 +13,7 @@
         <img src="{{site.url}}/images/prototype/prototype-{{i}}.jpg" alt="Prototype {{i}}">
       </div>
 
-      {% if i == page.max_prototype_images %}
+      {% if i == page.max_prototype_images and is_odd == 1 %}
       <div class="column"> </div>
       {% endif %}
 
