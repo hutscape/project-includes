@@ -1,0 +1,35 @@
+{% if site.data.cost %}
+<section class="section is-small">
+  <div class="container">
+    <h2 class="title is-1">Total Cost</h2>
+    <div class="content is-large">
+      <table class="table is-bordered is-striped is-narrow is-hoverable">
+        <thead class="has-background-grey"></thead>
+        <tr>
+          {% for header in site.data.cost[0] %}
+          <th>{{ header[0] }}</th>
+          {% endfor %}
+        </tr>
+        </thead>
+        <tbody>
+          {% for row in site.data.cost %}
+          {% if forloop.last %}
+          <tr>
+            {% for cell in row %}
+            <td><strong>{{ cell[1] }}</strong></td>
+            {% endfor %}
+          </tr>
+          {% else %}
+          <tr>
+            {% for cell in row %}
+            <td>{{ cell[1] }}</td>
+            {% endfor %}
+          </tr>
+          {% endif %}
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+{% endif %}
