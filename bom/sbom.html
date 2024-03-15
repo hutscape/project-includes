@@ -1,0 +1,37 @@
+{% if site.data.sbom %}
+<section class="section is-small">
+  <div class="container">
+    <h2 class="title is-1">Software Bill of Materials</h2>
+    <div class="content is-large">
+      <table class="table is-bordered is-striped is-narrow is-hoverable">
+        <thead class="has-background-grey"></thead>
+        <tr>
+          {% for header in site.data.sbom[0] %}
+          {% if forloop.index == 2 %}
+          {% continue %}
+          {% endif %}
+          <th>{{ header[0] }}</th>
+          {% endfor %}
+        </tr>
+        </thead>
+        <tbody>
+          {% for row in site.data.sbom %}
+          <tr>
+            {% for cell in row %}
+            {% if forloop.index0 == 0 %}
+            {% assign name = cell[1] %}
+            {% elsif forloop.index0 == 1 %}
+            {% assign link = cell[1] %}
+            <td><a href="{{ link }}">{{ name }}</a></td>
+            {% else %}
+            <td>{{ cell[1] }}</td>
+            {% endif %}
+            {% endfor %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+{% endif %}
