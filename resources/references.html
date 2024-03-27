@@ -1,0 +1,22 @@
+{% assign references = page.references %}
+{% for ref in references %}
+<section class="section is-small">
+  <div class="container">
+
+    <h3 class="title is-2">{{ ref.topic }}</h3>
+
+    <div class="content is-medium">
+      <ol>
+        {% for li in ref.list %}
+        <li>
+          <a href="{{ li.url }}">{{ li.name }}</a>
+          {% if li.description %}
+          : {{ li.description }}
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ol>
+    </div>
+  </div>
+</section>
+{% endfor %}

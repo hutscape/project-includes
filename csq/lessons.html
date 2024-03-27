@@ -1,0 +1,26 @@
+{% assign lessons = page.lessons %}
+<section class="section is-small">
+  <div class="container">
+    <h2 class="title is-1 has-background-info-light	">Quality</h2>
+
+    {% for le in lessons %}
+    <h3 class="title is-2">{{ le.title }}</h3>
+    {% if le.subtitle %}
+    <p class="subtitle">{{le.subtitle}}</p>
+    {% endif %}
+
+    <div class="content is-medium">
+      <ul>
+        {% for li in le.list %}
+        <li>
+          {{ li.name }}
+          {% if li.image %}
+          <img src="images/lessons/{{ li.image }}" alt="{{ li.name }}">
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  </div>
+</section>

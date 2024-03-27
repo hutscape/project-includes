@@ -1,0 +1,14 @@
+{% if page.progress %}
+<section class="section is-small">
+  <div class="container">
+    <h3 class="title is-2">Progress<h3>
+    <div class="content is-large">
+      <ul>
+        {% for item in page.progress %}
+        <li><strong>{{item.month}}</strong>: {{item.details}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+{% endif %}
