@@ -5,7 +5,7 @@
     <div class="content is-medium">
       <div class="box">
         {% for each_code in site.code %}
-        {% if each_code.title contains "Demo" %}
+        {% if each_code.title == "Demo" %}
         <a href="{{ site.url }}{{ each_code.url }}">{{ each_code.title }}</a>
         <div class="tags is-pulled-right">
           {% for feat in each_code.features %}
