@@ -19,8 +19,8 @@
   <link rel="icon" type="image/png" sizes="16x16" href="{{site.parent}}/assets/favicon-16x16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="{{site.parent}}/assets/favicon-32x32.png">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css"
-    integrity="sha512-IgmDkwzs96t4SrChW29No3NXBIBv8baW490zk5aXvhCD8vuZM3yUSkbyTBcXohkySecyzIrUwiF/qV0cuPcL3Q=="
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/1.0.0/css/bulma.min.css"
+    integrity="sha512-+oEiKVGJRHutsibRYkkTIfjI0kspDtgJtkIlyPCNTCFCdhy+nSe25nvrCw7UpHPwNbdmNw9AkgGA+ptQxcjPug=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="//fonts.googleapis.com/css?family=Schoolbell&display=swap" rel="stylesheet">
 
@@ -41,18 +41,18 @@
   </style>
 
   {% if page.url == "/csq" %}
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/frappe-gantt/0.6.1/frappe-gantt.css"
-    integrity="sha512-57KPd8WI3U+HC1LxsxWPL2NKbW82g0BH+0PuktNNSgY1E50mnIc0F0cmWxdnvrWx09l8+PU2Kj+Vz33I+0WApw=="
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/frappe-gantt/0.6.1/frappe-gantt.min.css"
+    integrity="sha512-b6CPl1eORfMoZgwWGEYWNxYv79KG0dALXfVu4uReZJOXAfkINSK4UhA0ELwGcBBY7VJN7sykwrCGQnbS8qTKhQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   {% endif %}
 
-  {% if page.url contains "/software" or "/examples" %}
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-light.min.css"
+  {% if page.url contains "/code" or "/power" %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-light.min.css"
     integrity="sha512-o5v54Kh5PH0dgnf9ei0L+vMRsbm5fvIvnR/XkrZZjN4mqdaeH7PW66tumBoQVIaKNVrLCZiBEfHzRY4JJSMK/Q=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   {% endif %}
 
-  {% if page.url contains "/examples" %}
+  {% if page.url contains "/code" %}
   <style>
     .video-container {
       position: relative;
@@ -76,6 +76,11 @@
   {% endif %}
 
   {% if page.url contains "/power" %}
-  <style>.content figure { text-align: left; }</style>
+  <style>
+    .content figure {
+      text-align: left;
+    }
+
+  </style>
   {% endif %}
 </head>
