@@ -1,0 +1,14 @@
+{% if page.features != false %}
+<section class="section is-small">
+  <div class="container">
+    <h2 class="title is-1">Features</h2>
+    <div class="content is-medium">
+      <ul>
+        {% for feat in page.features %}
+        <li>{{ feat.detail }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+{% endif %}

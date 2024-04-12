@@ -1,0 +1,28 @@
+<section class="section is-small">
+  <div class="container">
+    <h2 class="title is-1">Getting Started</h2>
+    <div class="columns">
+      <div class="column">
+        <div class="notification">
+          <p class="title">Step 1</p>
+          {% capture my_include %}{% include_relative start/step1.md %}{% endcapture %}
+          {{ my_include | markdownify }}
+        </div>
+      </div>
+      <div class="column">
+        <div class="notification">
+          <p class="title">Step 2</p>
+          {% capture my_include %}{% include_relative start/step2.md %}{% endcapture %}
+          {{ my_include | markdownify }}
+        </div>
+      </div>
+      <div class="column">
+        <div class="notification">
+          <p class="title">Step 3</p>
+          {% capture my_include %}{% include_relative start/step3.md %}{% endcapture %}
+          {{ my_include | markdownify }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
