@@ -5,6 +5,15 @@
 
     <div class="content is-medium">
       <div class="buttons">
+        {% if page.downloads.code != false %}
+        <a class="button is-primary is-outlined" href="{{site.github.raw_content_url}}/_code/demo">
+          <span class="icon">
+            <i class="fas fa-file-code"></i>
+          </span>
+          <span>Demo Code</span>
+        </a>
+        {% endif %}
+
         {% if page.downloads.schematic != false %}
         <a class="button is-info is-outlined" href="{{ site.url }}/pcb/docs/schematic.pdf">
           <span class="icon">
