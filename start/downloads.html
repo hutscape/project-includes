@@ -50,15 +50,6 @@
         </a>
         {% endif %}
 
-        {% for sw in page.software %}
-        <a class="button is-success is-outlined" href="{{site.github.repository_url}}/tree/master/{{sw.code}}">
-          <span class="icon">
-            <i class="fas fa-file-code"></i>
-          </span>
-          <span>{{sw.name}}</span>
-        </a>
-        {% endfor %}
-
         {% if page.downloads.bom != false %}
         <a class="button is-danger is-outlined" href="{{site.url}}/_data/bill_of_materials.csv">
           <span class="icon">
