@@ -83,4 +83,18 @@
 
   </style>
   {% endif %}
+
+  {% if page.url contains "/" %}
+  <style>
+    input[type="checkbox"]:checked+label {
+      text-decoration: line-through;
+      color: lightgray;
+    }
+
+    input[type="checkbox"]:checked {
+      accent-color: lightgray;
+    }
+
+  </style>
+  {% endif %}
 </head>
