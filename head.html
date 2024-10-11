@@ -86,12 +86,12 @@
 
   {% if page.url contains "/" %}
   <style>
-    input[type="checkbox"]:checked+label {
+    .checkbox input[type="checkbox"]:checked+span {
       text-decoration: line-through;
       color: lightgray;
     }
 
-    input[type="checkbox"]:checked {
+    .checkbox input[type="checkbox"]:checked {
       accent-color: lightgray;
     }
 
